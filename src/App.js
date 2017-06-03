@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import logo from './logo.svg';
 import './App.css';
-import Card from './component/Card/'
-
+import { Card, AppBar, DrawerNav } from './component';
+console.log(Card);
+console.log(AppBar);
 class App extends Component {
     render() {
         return (
             <MuiThemeProvider>
                 <div className="App">
-                    <div className="App-header">
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h2>Flash Card</h2>
-                    </div>
+                    {/*<div className="App-header">*/}
+                        {/*<img src={logo} className="App-logo" alt="logo" />*/}
+                        {/*<h2>Flash Card</h2>*/}
+                    {/*</div>*/}
+                    <AppBar />
                     <div
                         style={{
                             flex: 1,
@@ -31,6 +33,9 @@ class App extends Component {
 
                     />
                     </div>
+                    <DrawerNav
+
+                    />
                 </div>
             </MuiThemeProvider>
         );
