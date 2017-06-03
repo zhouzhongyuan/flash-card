@@ -38,7 +38,10 @@
   },
   "dependencies": {
     "eslint-plugin-jsx-a11y": "^5.0.1",
+    "material-ui": "^0.18.1",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-tap-event-plugin": "^2.0.1"
   }
 }
