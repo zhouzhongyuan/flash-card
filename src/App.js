@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import logo from './logo.svg';
 import './App.css';
-import { Card, AppBar, DrawerNav } from './component';
-console.log(Card);
-console.log(AppBar);
+import { Card, AppBar, DrawerNav, Add } from './component';
 class App extends Component {
     render() {
         return (
@@ -32,6 +30,7 @@ class App extends Component {
                         answer="TODO"
 
                     />
+                        <Add/>
                     </div>
                     <DrawerNav
 
