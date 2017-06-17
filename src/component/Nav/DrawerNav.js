@@ -3,16 +3,23 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
+import { Link } from 'react-router';
 
-
-class DrawerNav extends React.Component {
+const styles = {
+    linkStyle: {
+        display: 'inline-block',
+        width: '100%',
+        height: '100%',
+    },
+};
+export default class DrawerNav extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {open: false};
+        this.state = { open: false };
     }
 
-    handleToggle = () => this.setState({open: !this.state.open});
+    handleToggle = () => this.setState({ open: !this.state.open });
 
     render() {
         return (
@@ -21,17 +28,16 @@ class DrawerNav extends React.Component {
                     label="Toggle Drawer"
                     onTouchTap={this.handleToggle}
                 />
-                <Drawer open={this.state.open}>
+                <Drawer open>
                     <AppBar
                         title="Flash Card"
                         iconElementLeft={<div />}
                     />
-                    <MenuItem>Lists</MenuItem>
-                    <MenuItem>Quiz</MenuItem>
-                    <MenuItem>Add</MenuItem>
+                    <MenuItem><Link style={styles.linkStyle} to="/list">List</Link></MenuItem>
+                    <MenuItem><Link style={styles.linkStyle} to="/quiz">Quiz</Link></MenuItem>
+                    <MenuItem><Link style={styles.linkStyle} to="/add">Add</Link></MenuItem>
                 </Drawer>
             </div>
         );
     }
 }
-export default DrawerNav;

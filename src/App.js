@@ -1,44 +1,34 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import logo from './logo.svg';
+import { AppBar, DrawerNav } from './component';
 import './App.css';
-import { Card, AppBar, DrawerNav, Add } from './component';
-class App extends Component {
+
+export default class App extends PureComponent {
+    static propTypes = {
+        children: PropTypes.element.isRequired,
+    };
     render() {
         return (
             <MuiThemeProvider>
-                <div className="App">
-                    {/*<div className="App-header">*/}
-                        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-                        {/*<h2>Flash Card</h2>*/}
-                    {/*</div>*/}
+                <div
+                    className="App"
+                    style={{
+                        justifyContent: 'start',
+                    }}
+                >
                     <AppBar />
+                    <DrawerNav />
                     <div
                         style={{
-                            flex: 1,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            position: 'relative',
+                            left: 256,
                         }}
                     >
-
-                    <Card
-                        title="Card title"
-                        questionTitle="什么是关系型数据库？"
-                        questionDetail=""
-                        answer="TODO"
-
-                    />
-                        <Add/>
+                        {this.props.children}
                     </div>
-                    <DrawerNav
-
-                    />
                 </div>
             </MuiThemeProvider>
         );
     }
 }
-
-export default App;

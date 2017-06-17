@@ -7,13 +7,13 @@ const config = {
         'webpack-dev-server/client?http://localhost:8080',
         // 为webnpack-dev-server的环境打包代码，然后连接到制定服务器域名与端口
         'webpack/hot/only-dev-server',
-        //为热替换（HRM）打包好代码，only- 意味着只有成功更新运行代码才会执行HMR
-        path.resolve(__dirname, 'src/index.js')
+        // 为热替换（HRM）打包好代码，only- 意味着只有成功更新运行代码才会执行HMR
+        path.resolve(__dirname, 'src/index.js'),
     ],
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js',
-        publicPath: "/",
+        publicPath: '/',
     },
     devtool: 'cheap-eval-source-map',
     devServer: {
@@ -38,8 +38,8 @@ const config = {
                 loader: 'url-loader',
                 query: {
                     limit: 1000,
-                    name: '[name]-[sha512:hash:base64:7].[ext]'
-                }
+                    name: '[name]-[sha512:hash:base64:7].[ext]',
+                },
             },
         ],
     },
@@ -47,6 +47,7 @@ const config = {
         new webpack.HotModuleReplacementPlugin(),
         // 开启全局的HMR
         new webpack.NamedModulesPlugin(),
-    ]
+    ],
+    watch: true,
 };
 module.exports = config;

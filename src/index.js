@@ -1,11 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+import { Router, Route, browserHistory } from 'react-router';
+import { List, Quiz, Add } from './component';
+import './index.css';
+import App from './App';
 
+injectTapEventPlugin();
 ReactDOM.render(
-    <App />,
+    <Router history={browserHistory} >
+        <Route path="/" component={App}>
+            <Route path="list" component={List} />
+            <Route path="add" component={Add} />
+            <Route path="quiz" component={Quiz} />
+        </Route>
+    </Router>,
     document.getElementById('root'),
 );
