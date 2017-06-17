@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { List } from 'react-virtualized';
+import { List, AutoSizer } from 'react-virtualized';
 import config from '../../../config';
 import Card from '../Card';
 
@@ -34,15 +34,21 @@ export default class ListComponent extends PureComponent {
             key,         // Unique key within array of rows
             index,       // Index of row within collection
         }) {
-        const { title, detail, answer } = this.state.list[index];
+        const { title, detail, answer, chip } = this.state.list[index];
         return (
             <div
                 key={key}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                }}
             >
                 <Card
                     questionTitle={title}
                     questionDetail={detail}
                     answer={answer}
+                    chip={chip}
 
                 />
             </div>
@@ -52,16 +58,23 @@ export default class ListComponent extends PureComponent {
         return (
             <div
                 style={{
-                    backgroundColor: 'red',
+                    flex: 1,
                 }}
             >
-                <List
-                    width={600}
-                    height={600}
-                    rowCount={this.state.list.length}
-                    rowHeight={200}
-                    rowRenderer={this.rowRenderer}
-                />
+                <AutoSizer>
+                    {
+                        ({ height, width }) => (
+                            <List
+                                height={height}
+                                width={width}
+                                rowCount={this.state.list.length}
+                                rowHeight={200}
+                                rowRenderer={this.rowRenderer}
+                            />
+                        )
+                    }
+
+                </AutoSizer>
             </div>
         );
     }

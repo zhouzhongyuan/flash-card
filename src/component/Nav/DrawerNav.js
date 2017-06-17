@@ -23,7 +23,11 @@ export default class DrawerNav extends React.Component {
 
     render() {
         return (
-            <div>
+            <div
+                style={{
+                    height: 0,
+                }}
+            >
                 <RaisedButton
                     label="Toggle Drawer"
                     onTouchTap={this.handleToggle}

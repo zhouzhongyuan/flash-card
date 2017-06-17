@@ -1,9 +1,6 @@
 import React from 'react';
-import Avatar from 'material-ui/Avatar';
 import Chip from 'material-ui/Chip';
-import FontIcon from 'material-ui/FontIcon';
-import SvgIconFace from 'material-ui/svg-icons/action/face';
-import {blue300, indigo900} from 'material-ui/styles/colors';
+import PropTypes from 'prop-types';
 
 const styles = {
     chip: {
@@ -25,18 +22,29 @@ function handleTouchTap() {
     alert('You clicked the Chip.');
 }
 export default class ChipExampleSimple extends React.Component {
+    static propTypes = {
+        value: PropTypes.arrayOf(PropTypes.string).isRequired,
+    };
 
     render() {
         return (
             <div style={styles.wrapper}>
-
-                <Chip
-                    onRequestDelete={handleRequestDelete}
-                    onTouchTap={handleTouchTap}
-                    style={styles.chip}
-                >
-                    React
-                </Chip>
+                {
+                    this.props.value.map((item, index) => {
+                        if (!item) {
+                            return;
+                        }
+                        return (
+                            <Chip
+                                onRequestDelete={handleRequestDelete}
+                                onTouchTap={handleTouchTap}
+                                style={styles.chip}
+                            >
+                                {item}
+                            </Chip>
+                        );
+                    })
+                }
             </div>
         );
     }

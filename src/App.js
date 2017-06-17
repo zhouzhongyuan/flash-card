@@ -18,15 +18,16 @@ export default class App extends PureComponent {
                     }}
                 >
                     <AppBar />
-                    <DrawerNav />
                     <div
                         style={{
-                            position: 'relative',
-                            left: 256,
+                            flex: 1,
+                            marginLeft: 256,
+                            display: 'flex',
                         }}
                     >
                         {this.props.children}
                     </div>
+                    <DrawerNav />
                 </div>
             </MuiThemeProvider>
         );

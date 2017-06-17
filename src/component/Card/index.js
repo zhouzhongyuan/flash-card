@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
 import Chip from './Chip';
+
 class CardExampleWithAvatar extends Component {
     static propTypes = {
         questionTitle: PropTypes.string,
         questionDetail: PropTypes.string,
-        question: PropTypes.string,
         answer: PropTypes.string,
+        chip: PropTypes.arrayOf(PropTypes.string).isRequired,
     };
     static defaultProps = {
         questionTitle: '',
@@ -39,7 +40,9 @@ class CardExampleWithAvatar extends Component {
                 <CardTitle
                     title={this.props.questionTitle}
                 />
-                <Chip/>
+                <Chip
+                    value={this.props.chip}
+                />
                 <CardText
                     style={{
                         display: this.state.showAnswer ? 'none' : null,
